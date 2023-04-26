@@ -5,10 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+
+/**
+ * @author Abhishek Raj
+ */
 @Entity
 @Table(name = "Employee")
 @Getter
@@ -28,9 +34,10 @@ public class Employee {
 	@Column(name = "address")
 	private String address;
 	
-//	
-//	@ManyToOne(cascade = CascadeType.ALL )
-//	private  Department department;
+    @ManyToOne
+    @JoinColumn(name="department_id", nullable=false)
+    private Department department;
+	
 	
 	
 	

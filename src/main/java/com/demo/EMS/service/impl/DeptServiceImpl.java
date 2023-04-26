@@ -1,6 +1,7 @@
 package com.demo.EMS.service.impl;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,10 @@ import com.demo.EMS.dto.DeptDto;
 import com.demo.EMS.repository.DeptRepository;
 import com.demo.EMS.service.DeptService;
 
+/**
+ * @author Abhishek Raj
+ */
+
 @Component
 public class DeptServiceImpl implements DeptService{
 	
@@ -19,7 +24,7 @@ public class DeptServiceImpl implements DeptService{
 
 	@Override
 	public Map<String, String> addDepartment( DeptDto deptDto) {
-		
+		 	
 		Department dept = new Department();
 		dept.setDepartmentName(deptDto.getDepartmentName());
 		dept.setAcitive(deptDto.isAcitive());
@@ -41,9 +46,13 @@ public class DeptServiceImpl implements DeptService{
 	}
 
 	@Override
-	public Map<String, String> getAllDepartment() {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String, List<Department>> getAllDepartment() {
+		
+		List <Department>  departments = (List<Department>) deptRepository.findAll();
+		
+		return Collections.singletonMap("message", departments);
+		
+
 	}
 
 }

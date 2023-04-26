@@ -11,13 +11,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+/**
+ * @author Abhishek Raj
+ */
 		
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
 public class Department {
 	
 	@Id
@@ -31,9 +38,7 @@ public class Department {
 	@Column(name ="active_status")
 	private boolean isAcitive;
 	
-	@OneToMany(targetEntity = Employee.class, cascade= CascadeType.ALL, fetch = FetchType.LAZY , orphanRemoval = true)
-	@JoinColumn(name = "dept_id", referencedColumnName = "department_id")
-	
+	 @OneToMany(mappedBy="department")
 	private Set<Employee>  employees;
 
 	
