@@ -1,5 +1,7 @@
 package com.demo.EMS.dao;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,7 @@ public class Employee {
 	private String address;
 	
     @ManyToOne
+    @JsonIgnoreProperties("employees")
     @JoinColumn(name="department_id", nullable=false)
     private Department department;
 	

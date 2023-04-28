@@ -24,6 +24,7 @@ public class DeptServiceImpl implements DeptService{
 
 	@Override
 	public Map<String, String> addDepartment( DeptDto deptDto) {
+		
 		 	
 		Department dept = new Department();
 		dept.setDepartmentName(deptDto.getDepartmentName());

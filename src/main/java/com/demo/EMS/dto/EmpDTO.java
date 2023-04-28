@@ -27,5 +27,6 @@ public class EmpDTO {
 	private String contactNO;
 	
 	private String address;
-	//private String departmantname;
+	
+	private String departmentName;
 }

@@ -1,5 +1,6 @@
 package com.demo.EMS.controllers;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -38,9 +39,18 @@ public class DepartmentController {
 	}
 
 	@PostMapping(path = "/add/dept", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Map<String, String> > addDepartment(@Valid @RequestBody DeptDto deptDto) {
+	public ResponseEntity<Map<String, String>> addDepartment(@Valid @RequestBody DeptDto deptDto) {
 
-		return ResponseEntity.status(HttpStatus.CREATED).body(deptService.addDepartment(deptDto));
+		try {
+			return ResponseEntity.status(HttpStatus.CREATED).body(deptService.addDepartment(deptDto));
+		}
+
+		catch (Exception e) {
+
+			return ResponseEntity.status(HttpStatus.CONFLICT)
+					.body(Collections.singletonMap("message", "something went wrong."));
+		}
+
 	}
 
 	@DeleteMapping("/delete/dept")

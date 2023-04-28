@@ -32,7 +32,7 @@ public class Department {
 	@Column(name="department_id")
 	private int DepartmentId;
 	
-	@Column(name = "department_name")
+	@Column(name = "department_name",unique=true)
 	private String departmentName;
 	
 	@Column(name ="active_status")
