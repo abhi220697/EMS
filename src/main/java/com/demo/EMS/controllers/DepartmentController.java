@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
  */
 
 @RestController
-@RequestMapping("/app/v1")
+@RequestMapping("/app")
 public class DepartmentController {
 
 	@Autowired
